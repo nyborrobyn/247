@@ -37,7 +37,7 @@ $(function () {
    console.log(data3)
    
    $(function () {
-        $('#wrapper').highcharts({
+        $('#percent-chart').highcharts({
             title: {
                 text: 'Company Performance',
                 x: -20 //center
@@ -58,7 +58,7 @@ $(function () {
                 }]
             },
             tooltip: {
-                valueSuffix: '°C'
+                valueSuffix: '%'
             },
             legend: {
                 layout: 'vertical',
@@ -75,7 +75,7 @@ $(function () {
 
 
     $(function () {
-        $('#wrapper').highcharts({
+        $('#diff-chart').highcharts({
             chart: {
                 type: 'column'
             },
