@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Yearly Report for Company Whatever</title>
+    <link rel="stylesheet" href="_css/main.css">
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+
+</head>
+
+
+
+<body>
+    <div id="wrapper">
+        
+        <div id="header">
+            <h1>Budget & Actual Expenditures for Different Departments & Overall for Company</h1>
+
+        </div>
+
+        <div id="filters">
+            
+            <div id="dept-cluster">
+            </div>
+            
+
+            <div id="company-perf" style="min-width: 310px; height: 40%; margin: 0 auto"></div>
+
+        </div>
+
+    </div>
+
+
+
+<script>
+
+
+var options = {
+    chart: {
+        renderTo: "dept-cluster",
+        type: "bar",
+    },
+    title: {
+        text: 'Spending By Department', 
+        x: -20 //center
+
+    },
+    xAxis: {
+        categories: []
+    },
+    gridlineColor: "#d3d3d3",
+    gridlineDashStyle: "Dot",
+    labels: {
+      style: {
+        color: "#333333",
+        fontFamily: "Helvetica,Arial,sans-serif"
+      }
+    }
+    yAxis:{
+        title: 'Budgeted vs Actual'
+    },
+
+    plotLines: [{
+        value: 0,
+        width: 1, 
+        color: '#808080'
+    }]
+}, 
+legend: {
+    layout: 'horizontal',
+    align: 'center',
+    borderWidth: 0
+},
+series: []
+}
+
+$.get("data.csv", function (data) {
+
+  // split the csv by line ("\n")
+    var lines = data.split('\n');
+    
+  // "deptType" == an empty array to be populated by departments
+  // "budget" is an object containing key-value pairs where the keys are months of the year and the values are arrays of budget amounts for each department in that month (e.g. {'Info Tech': [450, 450, 475, etc], 'Feb': [450, 275, etc]})
+  //"actual" is an object containing key-value pairs where the keys are months of the year and the values are arrays of actual spending for each department in that month (e.g. {'Jan': [463, 213, etc], 'Feb': [460, 278, etc]})
+  var deptName = [];
+  var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+  var budget = {};
+  var actual = {};
+  var i = 0
+
+// loop through each line using $.each
+  $.each(lines, function(lineNo, line) {
+      
+
+// turn each line into an array that contains 5 items: sport type, gold count, silver count, bronze count, & total count
+    // use the .split() method
+      var items = line.split(',');
+
+// differentiate between header & content
+      
+    if (lineNo === 0) {
+        deptName.push(items[2:]);
+        }
+      
+    else if {
+        //lineNo % 2 == 0
+        budget[month[i]] = [items[2:]]
+        
+
+           }     
+
+
+</script>
+
+</body>
+</html>
